@@ -54,11 +54,12 @@
       "type": "decimal"
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name"
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "products"
     }
