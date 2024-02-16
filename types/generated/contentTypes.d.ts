@@ -692,7 +692,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     slug: Attribute.UID;
     products: Attribute.Relation<
       'api::category.category',
-      'oneToMany',
+      'manyToMany',
       'api::product.product'
     >;
     createdAt: Attribute.DateTime;
@@ -764,10 +764,10 @@ export interface ApiProductProduct extends Schema.CollectionType {
     image: Attribute.Media;
     thumbnail: Attribute.Media;
     originalPrice: Attribute.Decimal;
-    slug: Attribute.UID;
-    category: Attribute.Relation<
+    slug: Attribute.UID<'api::product.product', 'name'>;
+    categories: Attribute.Relation<
       'api::product.product',
-      'manyToOne',
+      'manyToMany',
       'api::category.category'
     >;
     createdAt: Attribute.DateTime;
